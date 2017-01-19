@@ -11,7 +11,7 @@ print(salaries)
 # Create a vector of 100 salaries in 2015 that have increased from 2014 by some amount
 # Hint: use `runif()` to add a random number to 2014's salaries. Starting from a
 # _negative_ number so that salaries may decrease!
-salaries.2015 <- salaries.2014 + c(runif(100, min = -50000, max = 50000))
+salaries.2015 <- salaries.2014 + c(runif(100, min = -5000, max = 10000))
 print(salaries.2015)
 
 # Create a data.frame 'salaries' by combining the 3 vectors you just made
@@ -20,34 +20,35 @@ salaries <- data.frame(employees, salaries.2014, salaries.2015, stringsAsFactors
 
 
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
-
-
+salaries$raise <- salaries$salaries.2015 - salaries$salaries.2014
+View(salaries)
 # Create a column 'got.raise' that is TRUE if the person got a raise
-
+salaries$got.raise <- salaries$raise > 0
 
 ### Retrieve values from your data frame to answer the following questions
 ### Note that you should get the value as specific as possible (e.g., a single
 ### cell rather than the whole row!)
 
 # What was the 2015 salary of employee 57
-
+salaries$salaries.2015[employees == "Employee 57"]
 
 # How many employees got a raise?
-
+number.raise <- length(salaries$got.raise[salaries$got.raise == TRUE])
 
 # What was the value of the highest raise?
-
+max.raise <- max(salaries$raise)
 
 # What was the "name" of the employee who received the highest raise?
-
+max.raise.emp <- salaries$employees[salaries$raise == max.raise]
 
 # What was the largest decrease in salaries between the two years?
-
+min.raise <- min(salaries$raise)
 
 # What was the name of the employee who recieved largest decrease in salary?
+min.raise.emp <- salaries$employees[salaries$raise == min.raise]
 
 # What was the average salary increase?
-
+avg.raise <- mean(salaries$raise)
 
 ### Bonus ###
 
