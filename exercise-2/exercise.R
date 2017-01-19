@@ -1,18 +1,22 @@
 # Create a vector of 100 employees ("Employee 1", "Employee 2", ... "Employee 100)
 # Hint: use the `paste()` function to produce the list
-
+employees <- c(paste("Employee", 1:100))
+print(employees)
 
 # Create a vector of 100 random salaries for the year 2014
 # Use the `runif()` function to pick a random number between 40000 and 50000
-
+salaries.2014 <- c(runif(100, min = 40000, max = 50000))
+print(salaries)
 
 # Create a vector of 100 salaries in 2015 that have increased from 2014 by some amount
 # Hint: use `runif()` to add a random number to 2014's salaries. Starting from a
 # _negative_ number so that salaries may decrease!
-
+salaries.2015 <- salaries.2014 + c(runif(100, min = -50000, max = 50000))
+print(salaries.2015)
 
 # Create a data.frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
+salaries <- data.frame(employees, salaries.2014, salaries.2015, stringsAsFactors = FALSE)
 
 
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
